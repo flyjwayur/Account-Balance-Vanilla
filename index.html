@@ -9,10 +9,12 @@
 <body>
     <div><h1>Account Balance</h1></div>
     <div class="input_field">
-        <input type="text" class="description_input" placeholder="Description" required>
-        <input type="number" class="amount_input" placeholder="Amount" required>
+        <label for="description">Description</label>
+        <input type="text" id="description" class="description_input" placeholder="ex)part time job" onkeyup="conformInputLetterValid(this)" required /> 
+        <label for="amount">Amount</label>
+        <input type="text" id="amount" class="amount_input" placeholder="500" onkeyup="conformInputNumValid(this)" required /> 
         <select id="input_type">
-            <option value="income">Income</option>
+        <option value="income">Income</option>
             <option value="expense">Expense</option>
         </select>
         <button class="add_info_btn">Add</button>
@@ -20,6 +22,7 @@
     <div class="account_display">
         <div class="income_display"></div>
         <div class="expense_display"></div>
+        <div class="balance_display"></div>
     </div>
     <script src="main.js"></script>
 </body>
