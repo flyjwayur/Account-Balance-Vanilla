@@ -7,6 +7,20 @@
     <title>Account Balance Tracker</title>
 </head>
 <body>
+    <div><h1>Account Balance</h1></div>
+    <div class="input_field">
+        <input type="text" class="description_input" placeholder="Description" required>
+        <input type="number" class="amount_input" placeholder="Amount" required>
+        <select id="input_type">
+            <option value="income">Income</option>
+            <option value="expense">Expense</option>
+        </select>
+        <button class="add_info_btn">Add</button>
+    </div>
+    <div class="account_display">
+        <div class="income_display"></div>
+        <div class="expense_display"></div>
+    </div>
     <script src="main.js"></script>
 </body>
 </html>
