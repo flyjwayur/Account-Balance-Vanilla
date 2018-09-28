@@ -85,21 +85,16 @@ const newAccount = new Account([
 ]);
 
 
-//Empty the input with unmatched Regex 
- const conformInputNumValid = (input) => {
-     let regex = /[^0-9]/;
-     console.log(regex.test(input.value));
-     if(regex.test(input.value)){
-         input.value = input.value.replace(/[^0-9]/,'');
-     }
+/***** Empty the input with unmatched Regex *****/
+//It validates when the input is number
+ const conformInputNumValid = (input) => {  
+    input.value = input.value.replace(/[^0-9]/,'');
  }
 
+ /* It validates when the input is letter
+ It also allows the empty space between letters */
 const conformInputLetterValid = (input) => {
-     let regex = /[^A-Za-z]/;
-     console.log(regex.test(input.value));
-     if(regex.test(input.value)){
-     input.value = input.value.replace(/[^A-Za-z]/,'');
- }
+     input.value = input.value.replace(/[^A-Za-z ]/,'');
  }
 
 
