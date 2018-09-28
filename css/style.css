@@ -3,3 +3,103 @@
     margin : 0; 
     padding : 0;
 }
+
+/******* Global CSS variable *******/
+
+:root {
+    /* font */
+    --font-title : 'Montserrat', sans-serif;
+    --font-content : 'Roboto Condensed', sans-serif;
+    /* color*/
+    --light-yellow : #f4f7dc;
+    --super-dark-cyan : #003f3f;
+    --dark-cyan : #008b8b;
+    --middle-cyan : #00bebe;
+    --middle-light-cyan : #d2ffff;
+    --light-cyan : #d1ffff;
+    --super-dark-grey : #18191b;
+    --dark-grey : #51565d;
+    --middle-grey: #757c86;
+    --orange : #ffa500;
+    --gold : #ffd700;
+    --light-slate-gray : #778899;
+    --white : #ffffff;
+}
+
+.top_title{
+    margin : 3rem auto;
+    font-weight : 800;
+    color : var(--dark-cyan);
+    font-family : var(--font-title);
+    text-align : center;  
+}
+
+.input_field{
+    font-size : 20px;
+    font-family : var(--font-title);
+    margin : 2rem auto;
+    color : var(--orange);
+    font-weight: 700;
+    text-align: center;
+}
+
+#description, #amount, #input_type{
+    font-size : 20px;
+    outline : none;
+    margin : 1rem;
+}
+
+.add_info_btn{
+    padding: 0.5rem 2rem;
+    background-color : var(--dark-cyan);
+    color : white;
+    font-size : 20px;
+    outline : none;
+}
+
+.add_info_btn:focus{
+    padding: 0.5rem 2rem;
+    background-color : var(--orange);
+    font-size : 20px;
+    outline : none;
+}
+
+.account_info_display{
+    margin-top : 5rem;
+}
+.incomes_expenses{
+    margin : auto;
+    display : flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width : 95%;
+}
+
+.incomes, .expenses{
+    padding : 1.5rem;
+    border : 1px #51565d solid;
+    background-color :#f4f7dc;
+}
+
+.title{
+    text-align: center;
+    font-family: var(--font-content);
+    margin : 1rem; 
+    font-size : 30px;
+    color: var(--dark-grey);
+}
+
+.income_display, .expense_display{
+    font-size : 25px;
+    padding : 2rem;
+    margin : 1rem;
+    border : 1px grey solid;
+}
+
+.balance_display{
+    text-align: center;
+    font-family: var(--font-content);
+    margin : 2rem; 
+    font-size : 30px;
+    color: var(--orange);
+}

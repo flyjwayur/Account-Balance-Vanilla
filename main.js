@@ -134,13 +134,13 @@ const displayAccount = () => {
     cleanDisplayedhtml(income_display, expense_display, balance_display);
     for(let {description, income, date} of newAccount.incomes) {
         const p = document.createElement('p');
-        p.textContent = `Income: ${description} ${income} ${date}`;
+        p.textContent = `${description} ${income} ${date}`;
         income_display.appendChild(p);
     }
     
     for(let {description, expense, date} of newAccount.expenses) {
         const p = document.createElement('p');
-        p.textContent = `Expense: ${    description} ${expense} ${date}`;
+        p.textContent = `${description} ${expense} ${date}`;
         expense_display.appendChild(p);
     }
     balance_display.textContent = `Net : ${newAccount.totalBalance} \u20AC`;
