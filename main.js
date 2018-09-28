@@ -1,3 +1,26 @@
+// Get the current time and display the time
+function displayDateTime() {
+    let now = new Date();
+    let day = now.getDate();
+    if (day < 10) {
+        day = "0" + day;
+    }
+    let month = now.getMonth();
+    if (month < 10) {
+        month = "0" + month;
+    }
+    let year = now.getFullYear();
+    let hours = now.getHours();
+    if (hours < 10) {
+        hours = "0" + month;
+    }
+    let minutes = now.getMinutes();
+    if (minutes < 10) {
+        minutes = "0" + minutes;
+    }
+    return `${day}/${month}/${year} ${hours}:${minutes}`;
+}
+
 // Account Template 
 class Account {
     constructor(incomes, expenses){
@@ -20,13 +43,15 @@ class Account {
     addIncome(){
         let description = document.querySelector('.description_input').value;
         let income = parseInt(document.querySelector('.amount_input').value);
-        this.incomes.push({description, income});
+        let date = displayDateTime();
+        this.incomes.push({description, income, date});
     }
 
     addExpense(){
         let description = document.querySelector('.description_input').value;
         let expense = parseInt(document.querySelector('.amount_input').value);
-        this.expenses.push({description, expense});
+        let date = displayDateTime();
+        this.expenses.push({description, expense, date});
     }
     
     calTotalIncome(){
@@ -50,13 +75,13 @@ class Account {
 
 // Default values for account;
 const newAccount = new Account([
-    { description: "salary", income: 10000  },
-    { description: "freelance", income: 5000 },
-    { description: "stock", income: 3000 }
+    { description: "salary", income: 10000, date: "01/08/2018 03:56" },
+    { description: "freelance", income: 5000, date: "12/08/2018 15:20" },
+    { description: "stock", income: 3000,  date: "28/08/2018 18:56"}
 ],[
-    { description: "electricity", expense: 500 },
-    { description: "water", expense: 100 },
-    { description: "coffee", expense: 40 }
+    { description: "electricity", expense: 500, date: "03/09/2018 12:00" },
+    { description: "water", expense: 100, date: "15/09/2018 13:21" },
+    { description: "coffee", expense: 40, date: "26/08/2018 19:17" }
 ]);
 
 
@@ -105,27 +130,24 @@ const cleanDisplayedhtml = (income_display, expense_display, balance_display) =>
     }
 }
 
+
 //Display the inforamtion of account and remove when display new account
 const displayAccount = () => {
-
     const income_display = document.querySelector('.income_display');
     const expense_display = document.querySelector('.expense_display');
     const balance_display = document.querySelector('.balance_display');
-
     cleanDisplayedhtml(income_display, expense_display, balance_display);
-
-    for(let {description, income} of newAccount.incomes) {
+    for(let {description, income, date} of newAccount.incomes) {
         const p = document.createElement('p');
-        p.textContent = `Income: ${description} ${income}`;
+        p.textContent = `Income: ${description} ${income} ${date}`;
         income_display.appendChild(p);
     }
     
-    for(let {description, expense} of newAccount.expenses) {
+    for(let {description, expense, date} of newAccount.expenses) {
         const p = document.createElement('p');
-        p.textContent = `Expense: ${description} ${expense}`;
+        p.textContent = `Expense: ${    description} ${expense} ${date}`;
         expense_display.appendChild(p);
     }
-
     balance_display.textContent = `Net : ${newAccount.totalBalance} \u20AC`;
     
 }
