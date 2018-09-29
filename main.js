@@ -132,16 +132,16 @@ const displayAccount = () => {
     const expense_display = document.querySelector('.expense_display');
     const balance_display = document.querySelector('.balance_display');
     cleanDisplayedhtml(income_display, expense_display, balance_display);
+
     for(let {description, income, date} of newAccount.incomes) {
-        const p = document.createElement('p');
-        p.textContent = `${description} ${income} ${date}`;
-        income_display.appendChild(p);
+
+        income_display.insertAdjacentHTML('afterbegin',
+        `<p>${description.toUpperCase()} <span>${income}</span> ${date}</p>`);
     }
     
     for(let {description, expense, date} of newAccount.expenses) {
-        const p = document.createElement('p');
-        p.textContent = `${description} ${expense} ${date}`;
-        expense_display.appendChild(p);
+        expense_display.insertAdjacentHTML('afterbegin',
+        `<p>${description.toUpperCase()} <span>${expense}</span> ${date}</p>`);
     }
     balance_display.textContent = `Net : ${newAccount.totalBalance} \u20AC`;
     

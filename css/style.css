@@ -77,29 +77,42 @@
 
 .incomes, .expenses{
     padding : 1.5rem;
-    border : 1px #51565d solid;
+    border : 1px var(--dark-grey) solid;
     background-color :#f4f7dc;
 }
 
 .title{
     text-align: center;
     font-family: var(--font-content);
-    margin : 1rem; 
     font-size : 30px;
-    color: var(--dark-grey);
+    color: var(--light-yellow);
+    background-color : var(--dark-grey);
+    padding : 1rem;
 }
 
 .income_display, .expense_display{
-    font-size : 25px;
+    font-size : 20px;
     padding : 2rem;
-    margin : 1rem;
     border : 1px grey solid;
+    display : flex;
+    flex-direction : column;
+    font-family: var(--font-content);
+}
+
+.income_display p, .expense_display p{
+    padding : 0.5rem;
+}
+
+.income_display p span, .expense_display p span{
+    color : #003f3f;
+    margin : auto 20px;
+    font-size : 23px;
 }
 
 .balance_display{
     text-align: center;
     font-family: var(--font-content);
-    margin : 2rem; 
+    padding : 2rem auto; 
     font-size : 30px;
     color: var(--orange);
 }
