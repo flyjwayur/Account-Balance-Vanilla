@@ -99,11 +99,12 @@
     font-family: var(--font-content);
 }
 
-.income_display p, .expense_display p{
+.income_display li, .expense_display li{
     padding : 0.5rem;
+    list-style-type: none;
 }
 
-.income_display p span, .expense_display p span{
+.income_display li span, .expense_display li span{
     color : #003f3f;
     margin : auto 20px;
     font-size : 23px;

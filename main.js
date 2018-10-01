@@ -1,4 +1,6 @@
-// ID generator
+// ID generator - 
+// With execution time test, userIdGenerator fn is a little bit faster than generateUUID
+console.time("fn#1");
 function userIdGenerator() {
     let userId = "";
     const lettersNumbers =
@@ -9,8 +11,30 @@ function userIdGenerator() {
         userId += lettersNumbers[Math.floor(Math.random() * lengthOfnumLet)];
     }
     return userId;
-    }
+}
+console.timeEnd("fn#1");
 
+/*
+console.time("fn#2");
+function generateUUID(idLength = 7) {
+    let id = new Array(idLength);
+        
+    // Generate random number or character
+    let uuidArr = [...id].map(curr => {
+        let randomNum = Math.floor(Math.random() * 36);
+        let randomNumToStr = randomNum.toString(36);
+        let isUppercase = Math.random() > 0.5;
+        
+        return (curr = isUppercase ? randomNumToStr.toUpperCase() : randomNumToStr);
+    });
+        
+    // Join the uuid array
+    let uuid = uuidArr.join("");
+        
+    return uuid;
+    }
+console.timeEnd("fn#2");
+*/
 
 // Get the current time and display the time
 function displayDateTime() {
@@ -152,12 +176,12 @@ const displayAccount = () => {
     for(let {description, income, date} of newAccount.incomes) {
 
         income_display.insertAdjacentHTML('afterbegin',
-        `<p>${description.toUpperCase()} <span>${income}</span> ${date}</p>`);
+        `<li>${description.toUpperCase()} <span>${income}</span> ${date}</li>`);
     }
     
     for(let {description, expense, date} of newAccount.expenses) {
         expense_display.insertAdjacentHTML('afterbegin',
-        `<p>${description.toUpperCase()} <span>${expense}</span> ${date}</p>`);
+        `<li>${description.toUpperCase()} <span>${expense}</span> ${date}</li>`);
     }
     balance_display.textContent = `Net : ${newAccount.totalBalance} \u20AC`;
     
