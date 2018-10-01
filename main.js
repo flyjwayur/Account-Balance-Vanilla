@@ -81,17 +81,15 @@ class Account {
     addIncome(){
         let description = document.querySelector('.description_input').value;
         let income = parseInt(document.querySelector('.amount_input').value);
-        let id = userIdGenerator();
         let date = displayDateTime();
-        this.incomes.push({id, description, income, date});
+        this.incomes.push({description, income, date});
     }
 
     addExpense(){
         let description = document.querySelector('.description_input').value;
         let expense = parseInt(document.querySelector('.amount_input').value);
-        let id = userIdGenerator();
         let date = displayDateTime();
-        this.expenses.push({id, description, expense, date});
+        this.expenses.push({description, expense, date});
     }
     
     calTotalIncome(){
@@ -115,13 +113,13 @@ class Account {
 
 // Default values for account;
 const newAccount = new Account([
-    { id: "3zMiqCl", description: "salary", income: 10000, date: "01/08/2018 03:56" },
-    { id: "x57C2vS", description: "freelance", income: 5000, date: "12/08/2018 15:20" },
-    { id: "3ZcJbBi", description: "stock", income: 3000,  date: "28/08/2018 18:56"}
+    { description: "salary", income: 10000, date: "01/08/2018 03:56" },
+    { description: "freelance", income: 5000, date: "12/08/2018 15:20" },
+    { description: "stock", income: 3000,  date: "28/08/2018 18:56"}
 ],[
-    { id: "epCkk7N", description: "electricity", expense: 500, date: "03/09/2018 12:00" },
-    { id: "Fc2TJzk", description: "water", expense: 100, date: "15/09/2018 13:21" },
-    { id: "3tQpoxb", description: "coffee", expense: 40, date: "26/08/2018 19:17" }
+    { description: "electricity", expense: 500, date: "03/09/2018 12:00" },
+    { description: "water", expense: 100, date: "15/09/2018 13:21" },
+    { description: "coffee", expense: 40, date: "26/08/2018 19:17" }
 ]);
 
 
@@ -176,12 +174,12 @@ const displayAccount = () => {
     for(let {description, income, date} of newAccount.incomes) {
 
         income_display.insertAdjacentHTML('afterbegin',
-        `<li>${description.toUpperCase()} <span>${income}</span> ${date}</li>`);
+        `<li id=${userIdGenerator()}>${description.toUpperCase()} <span>${income}</span> ${date}</li>`);
     }
     
     for(let {description, expense, date} of newAccount.expenses) {
         expense_display.insertAdjacentHTML('afterbegin',
-        `<li>${description.toUpperCase()} <span>${expense}</span> ${date}</li>`);
+        `<li id=${userIdGenerator()}>${description.toUpperCase()} <span>${expense}</span> ${date}</li>`);
     }
     balance_display.textContent = `Net : ${newAccount.totalBalance} \u20AC`;
     

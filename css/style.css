@@ -21,6 +21,7 @@
     --dark-grey : #51565d;
     --middle-grey: #757c86;
     --orange : #ffa500;
+    --orange-red : #ff4500;
     --gold : #ffd700;
     --light-slate-gray : #778899;
     --white : #ffffff;
@@ -50,23 +51,26 @@
 }
 
 .add_info_btn{
-    padding: 0.5rem 2rem;
+    padding: 0.5rem 1.5rem;
     background-color : var(--dark-cyan);
     color : white;
     font-size : 20px;
     outline : none;
+    border-radius : 10%;
 }
 
 .add_info_btn:focus{
-    padding: 0.5rem 2rem;
+    padding: 0.5rem 1.5rem;
     background-color : var(--orange);
     font-size : 20px;
     outline : none;
+    border-radius : 10%;
 }
 
 .account_info_display{
     margin-top : 5rem;
 }
+
 .incomes_expenses{
     margin : auto;
     display : flex;
