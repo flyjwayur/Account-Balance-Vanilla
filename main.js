@@ -1,3 +1,17 @@
+// ID generator
+function userIdGenerator() {
+    let userId = "";
+    const lettersNumbers =
+        "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    let lengthOfnumLet = lettersNumbers.length;
+    
+    for (var i = 0; i < 7; i++) {
+        userId += lettersNumbers[Math.floor(Math.random() * lengthOfnumLet)];
+    }
+    return userId;
+    }
+
+
 // Get the current time and display the time
 function displayDateTime() {
     let now = new Date();
@@ -43,15 +57,17 @@ class Account {
     addIncome(){
         let description = document.querySelector('.description_input').value;
         let income = parseInt(document.querySelector('.amount_input').value);
+        let id = userIdGenerator();
         let date = displayDateTime();
-        this.incomes.push({description, income, date});
+        this.incomes.push({id, description, income, date});
     }
 
     addExpense(){
         let description = document.querySelector('.description_input').value;
         let expense = parseInt(document.querySelector('.amount_input').value);
+        let id = userIdGenerator();
         let date = displayDateTime();
-        this.expenses.push({description, expense, date});
+        this.expenses.push({id, description, expense, date});
     }
     
     calTotalIncome(){
@@ -75,13 +91,13 @@ class Account {
 
 // Default values for account;
 const newAccount = new Account([
-    { description: "salary", income: 10000, date: "01/08/2018 03:56" },
-    { description: "freelance", income: 5000, date: "12/08/2018 15:20" },
-    { description: "stock", income: 3000,  date: "28/08/2018 18:56"}
+    { id: "3zMiqCl", description: "salary", income: 10000, date: "01/08/2018 03:56" },
+    { id: "x57C2vS", description: "freelance", income: 5000, date: "12/08/2018 15:20" },
+    { id: "3ZcJbBi", description: "stock", income: 3000,  date: "28/08/2018 18:56"}
 ],[
-    { description: "electricity", expense: 500, date: "03/09/2018 12:00" },
-    { description: "water", expense: 100, date: "15/09/2018 13:21" },
-    { description: "coffee", expense: 40, date: "26/08/2018 19:17" }
+    { id: "epCkk7N", description: "electricity", expense: 500, date: "03/09/2018 12:00" },
+    { id: "Fc2TJzk", description: "water", expense: 100, date: "15/09/2018 13:21" },
+    { id: "3tQpoxb", description: "coffee", expense: 40, date: "26/08/2018 19:17" }
 ]);
 
 
@@ -153,7 +169,9 @@ const add_info_btn = document.querySelector('.add_info_btn');
 add_info_btn.addEventListener("click", () => { 
     addDataAfterValidation();
     displayAccount();
+    console.log(newAccount);
 });
 
 //Default display
 displayAccount();
+
