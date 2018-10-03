@@ -93,10 +93,7 @@ class Account {
     let date = displayDateTime();
     this.expenses.push({ description, expense, date });
     // Save expenses to localStorage
-    localStorage.setItem(
-      "expenses",
-      JSON.stringify(newAccount.expenses, undefined, 4)
-    );
+    localStorage.setItem("expenses", JSON.stringify(this.expenses, undefined, 4));
   }
 
   calTotalIncome() {
@@ -122,14 +119,10 @@ class Account {
 // Default values for account;
 const newAccount = new Account(
   [
-    { description: "salary", income: 10000, date: "01/08/2018 03:56" },
-    { description: "freelance", income: 5000, date: "12/08/2018 15:20" },
-    { description: "stock", income: 3000, date: "28/08/2018 18:56" }
+    { description: "salary", income: 10000, date: "01/08/2018 03:56" }
   ],
   [
-    { description: "electricity", expense: 500, date: "03/09/2018 12:00" },
-    { description: "water", expense: 100, date: "15/09/2018 13:21" },
-    { description: "coffee", expense: 40, date: "26/08/2018 19:17" }
+    { description: "coffee", expense: 500, date: "03/08/2018 11:00" }
   ]
 );
 
@@ -176,6 +169,7 @@ const cleanDisplayedhtml = (
   }
 };
 
+
 //Display the inforamtion of account and remove when display new account
 const displayAccount = () => {
   const income_display = document.querySelector(".income_display");
@@ -187,6 +181,27 @@ const displayAccount = () => {
   const incomesObj = JSON.parse(localStorage.getItem("incomes"));
   const expensesObj = JSON.parse(localStorage.getItem("expenses"));
 
+  if(localStorage.getItem('incomes') == null || localStorage.getItem('expenses') == null){
+    for (let { description, income, date } of newAccount.incomes) {
+      income_display.insertAdjacentHTML(
+        "afterbegin",
+        `<li id=${userIdGenerator()}><span class="desc_span">${description.toUpperCase()}</span>
+        <span class="amount_span">${income}</span> <span class="date_span">${date}</span></li>`
+      );
+    }
+  
+    for (let { description, expense, date } of newAccount.expenses) {
+      expense_display.insertAdjacentHTML(
+        "afterbegin",
+        `<li id=${userIdGenerator()}><span class="desc_span">${description.toUpperCase()}</span>
+        <span class="amount_span"> -${expense}</span> <span class="date_span">${date}</span></li>`
+      );
+    }
+    balance_display.textContent = `Net : ${newAccount.incomes[0].income - newAccount.expenses[0].expense} \u20AC`;
+  }
+
+
+ if(localStorage.getItem('incomes') !== null && localStorage.getItem('expenses') !== null){
   for (let { description, income, date } of incomesObj) {
     income_display.insertAdjacentHTML(
       "afterbegin",
@@ -203,6 +218,7 @@ const displayAccount = () => {
     );
   }
   balance_display.textContent = `Net : ${newAccount.totalBalance} \u20AC`;
+ }
 };
 
 // Add button and eventlistner
@@ -216,3 +232,4 @@ add_info_btn.addEventListener("click", () => {
 
 //Default display
 displayAccount();
+
