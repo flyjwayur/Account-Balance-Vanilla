@@ -8,9 +8,10 @@ Users can add incomes & expenses to the account and can get a balance :D
 
 * Create account data 
 * Insert the income/expense into account data
-* Sum of incomes & expenses 
+* Sum incomes & expenses 
+* Store income/expense data into localstorage
+* Display the income & expense data from localstrage
 * Display account balance
-* Display the income & expense 
 
 
 ### 3. Demo 
